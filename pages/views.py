@@ -2,16 +2,16 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("index page.")
+    return render(request, 'pages/index.html')
 
 def about(request):
-    return HttpResponse("about page")
+    return render(request, 'pages/about.html')
 
 def privacy_policy(request):
-    return HttpResponse("privacy policy page.")
+    return render(request, 'pages/privacy-policy.html')
 
 def cookie_policy(request):
-    return HttpResponse("cookie policy page.")
+    return render(request, 'pages/cookie-policy.html')
 
 def terms_conditions(request):
-    return HttpResponse("terms and conditions page.")
+    return render(request, 'pages/terms-conditions.html')
