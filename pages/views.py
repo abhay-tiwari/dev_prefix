@@ -4,6 +4,13 @@ from django.http import HttpResponse
 def index(request):
     return render(request, 'pages/index.html')
 
+def category(request, category_name):
+    context = {
+        "category": category_name
+    }
+
+    return render(request, 'pages/category.html', context)
+
 def about(request):
     return render(request, 'pages/about.html')
 

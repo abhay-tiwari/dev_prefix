@@ -1,7 +1,130 @@
 {% extends 'layout.html'%}
 
+{% load static %}
+
 {% block content %}
 
-<h1>index page</h1>
+<section id="main-content">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12 text-center text-uppercase">
+                <h3 class="brand-name">
+                    Dev Prefix
+                </h3>
+
+                <div class="brand-subheading mt-2">
+                    Blog Each Sunday & Thrusday
+                </div>
+            </div>
+        </div>
+
+        <div class="post-carousel mt-5 px-5">
+            <div class="carousel-slide">
+                <div class="row mt-5">
+                    <div class="col-12 d-flex flex-wrap justify-content-center">
+                        <div class="tag mr-2">Python</div>
+                        <div class="tag mr-2">Django</div>
+                        <div class="tag">Featured</div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12 col-md-6 offset-md-3 text-center">
+                        <h3 class="post-title">
+                            How to Create a Basic Web Application using Flask
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center align-items-center my-5">
+                    <div class="col-12 post-author text-center text-uppercase">
+                        by Abhay Tiwari
+                    </div>
+
+                    <div class="col-12 mt-2 d-flex flex-wrap justify-content-center">
+                        <div class="likes pr-3">
+                            <i class="fa fa-heart-o pr-1"></i> 150
+                        </div>
+
+                        <div class="comments">
+                            <i class="fa fa-comment-o pr-1"></i> 25
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="row mt-5">
+                    <div class="col-12 d-flex flex-wrap justify-content-center">
+                        <div class="tag mr-2">Python</div>
+                        <div class="tag mr-2">Algorithms</div>
+                        <div class="tag">Featured</div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12 col-md-6 offset-md-3 text-center">
+                        <h3 class="post-title">
+                            What is Queue? and How to Implement Queue in Python
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center align-items-center my-5">
+                    <div class="col-12 post-author text-center text-uppercase">
+                        by Abhay Tiwari
+                    </div>
+
+                    <div class="col-12 mt-2 d-flex flex-wrap justify-content-center">
+                        <div class="likes pr-3">
+                            <i class="fa fa-heart-o pr-1"></i> 125
+                        </div>
+
+                        <div class="comments">
+                            <i class="fa fa-comment-o pr-1"></i> 20
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="carousel-slide">
+                <div class="row mt-5">
+                    <div class="col-12 d-flex flex-wrap justify-content-center">
+                        <div class="tag mr-2">Python</div>
+                        <div class="tag mr-2">Algorithms</div>
+                        <div class="tag">Featured</div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12 col-md-6 offset-md-3 text-center">
+                        <h3 class="post-title">
+                            What is Stack? and How to Implement Stack in Python
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center align-items-center my-5">
+                    <div class="col-12 post-author text-center text-uppercase">
+                        by Abhay Tiwari
+                    </div>
+
+                    <div class="col-12 mt-2 d-flex flex-wrap justify-content-center">
+                        <div class="likes pr-3">
+                            <i class="fa fa-heart-o pr-1"></i> 95
+                        </div>
+
+                        <div class="comments">
+                            <i class="fa fa-comment-o pr-1"></i> 30
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'partials/_recent-posts.html' %}
 
 {% endblock %}
