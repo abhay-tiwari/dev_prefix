@@ -53,8 +53,23 @@
     --post-border-color: var(--grey-color);
 }
 
+*:focus {
+    outline: none;
+    box-shadow: none;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: var(--border-color-primary);
 }
 
 .navbar-light .navbar-brand, .navbar-light .navbar-brand:hover {
@@ -86,6 +101,7 @@ body {
     color: var(--text-color-primary);
     letter-spacing: 2px;
     font-size: 0.875rem;
+    text-transform: uppercase;
 }
 
 .btn-primary-outline:hover {
@@ -255,16 +271,6 @@ body {
     letter-spacing: 2px;
 }
 
-#right-options .newsletter .form-control {
-    border-radius: 0;
-}
-
-#right-options .newsletter .form-control:focus {
-    border-color: var(--border-color-primary);
-    box-shadow: none;
-    outline: 0;
-}
-
 #right-options .social-media h3 {
     color: var(--text-color-primary);
     font-size: 1.25rem;
@@ -302,7 +308,6 @@ body {
     color: var(--text-color-dark);
     letter-spacing: 2px;
     font-size: 0.875rem;
-    font-weight: 500;
     text-align: center;
 }
 
@@ -358,4 +363,34 @@ body {
     font-size: 0.875rem;
     letter-spacing: 2px;
     color: var(--text-color-dark);
+}
+
+#contact-us {
+    letter-spacing: 2px;
+}
+
+#contact-us .card {
+    border-radius: 0;   
+}
+
+#contact-us h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-color-primary);
+}
+
+#contact-us button:focus {
+    box-shadow: none;
+}
+
+#contact-us p {
+    font-size: 0.875rem;
+    color: var(--text-color-dark);
+}
+
+#contact-us .message {
+    background-color: var(--text-color-primary);
+    color: var(--text-color-white);
+    font-weight: 300;
+    font-size: 0.875rem;
 }
