@@ -333,7 +333,9 @@ body {
 
 #privacy-policy .card,
 #terms-conditions .card,
-#cookie-policy .card {
+#cookie-policy .card,
+#login .card,
+#register .card {
     border-radius: 0;
 }
 
@@ -373,7 +375,10 @@ body {
     border-radius: 0;   
 }
 
-#contact-us h2 {
+#contact-us h2,
+#login h2,
+#register h2
+{
     font-size: 1.5rem;
     font-weight: 500;
     color: var(--text-color-primary);
@@ -392,5 +397,19 @@ body {
     background-color: var(--text-color-primary);
     color: var(--text-color-white);
     font-weight: 300;
+    font-size: 0.875rem;
+}
+
+#login, 
+#register {
+    letter-spacing: 2px;
+}
+
+#login .card,
+#register .card {
+    padding: 2rem 4rem;
+}
+
+#register label {
     font-size: 0.875rem;
 }
