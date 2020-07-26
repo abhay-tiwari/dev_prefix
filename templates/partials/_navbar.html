@@ -9,24 +9,55 @@
             
             <ul class="navbar-nav mr-auto text-uppercase">
                 {% if not user.is_authenticated %}
-                <li class="nav-item active">
-                    <a class="nav-link" href="/" >Home</a>
+                <li 
+                {% if '/' == request.path %}
+                class="nav-item active"
+                {% else %}
+                class="nav-item"
+                {% endif %}
+                
+                >
+                    <a class="nav-link" href="{% url 'index' %}" >Home</a>
                 </li>
     
-                <li class="nav-item">
-                    <a class="nav-link" href="/python">Python</a>
+                <li
+                {% if 'python' in request.path %}
+                class="nav-item active"
+                {% else %}
+                class="nav-item"
+                {% endif %}
+                >
+                    <a class="nav-link" href="{% url 'category' 'python' %}">Python</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/react">React</a>
+                <li 
+                {% if 'react' in request.path %}
+                class="nav-item active"
+                {% else %}
+                class="nav-item"
+                {% endif %}
+                >
+                    <a class="nav-link" href="{% url 'category' 'react' %}">React</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/django">Django</a>
+                <li 
+                {% if 'django' in request.path %}
+                class="nav-item active"
+                {% else %}
+                class="nav-item"
+                {% endif %}
+                >
+                    <a class="nav-link" href="{% url 'category' 'django' %}">Django</a>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/algorithm">Algorithms</a>
+                <li 
+                {% if 'algorithms' in request.path %}
+                class="nav-item active"
+                {% else %}
+                class="nav-item"
+                {% endif %}
+                >
+                    <a class="nav-link" href="{% url 'category'  'algorithms' %}">Algorithms</a>
                 </li>
 
                 {% else %}
