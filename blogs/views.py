@@ -5,3 +5,6 @@ def index(request):
 
 def add_blogs(request):
     return render(request, "blogs/add-blog.html")
+
+def blog(request, slug):
+    return render(request, "blogs/blog.html")

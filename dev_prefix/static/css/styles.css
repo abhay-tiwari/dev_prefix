@@ -278,12 +278,14 @@ body {
     text-align: center;
 }
 
-#right-options .social-media a {
+#right-options .social-media a,
+#blog-footer .social-media a {
     font-size: 1.25rem;
     color: var(--text-color-dark);
 }
 
-#right-options .social-media a:hover {
+#right-options .social-media a:hover, 
+#blog-footer .social-media a:hover {
     color: var(--text-color-primary);
 }
 
@@ -331,11 +333,7 @@ body {
     color: var(--text-color-primary);
 }
 
-#privacy-policy .card,
-#terms-conditions .card,
-#cookie-policy .card,
-#login .card,
-#register .card {
+.card {
     border-radius: 0;
 }
 
@@ -411,5 +409,74 @@ body {
 }
 
 #register label {
+    font-size: 0.875rem;
+}
+
+#blog {
+    letter-spacing: 2px;
+}
+
+#blog h2 {
+    font-size: 1.5rem;
+    color: var(--text-color-dark);
+}
+
+#blog .blog-subheader {
+    font-size: 0.75rem;
+    color: var(--text-color-dark);
+}
+
+#blog-footer h4 {
+    font-size: 1rem;
+    color: var(--text-color-dark);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+#blog-footer .likes, #blog-footer .comments {
+    font-size: 0.875rem;
+}
+
+#related-blogs h2,
+#comments h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-color-primary);
+}
+
+#related-blogs h3 {
+    font-size: 1.25rem;
+}
+
+#related-blogs p,
+#related-blogs .likes, .comments {
+    font-size: 0.875rem;
+}
+
+#comments .comment-author {
+    font-size: 0.875rem;
+    color: var(--text-color-primary);
+}
+
+#comments .comment-since {
+    font-size: 0.75rem;
+}
+
+#comments .comment-content {
+    font-size: 0.75rem;
+}
+
+#comments .btn-primary-outline {
+    font-size: 0.75rem;
+}
+
+#add-comment h3 {
+    font-size: 1.25rem;
+    color: var(--text-color-primary);
+    text-transform: uppercase;
+}
+
+#add-comment label {
     font-size: 0.875rem;
 }

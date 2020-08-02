@@ -1,0 +1,387 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+<article id="blog">
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12">
+                <section id="blog-header">
+                    <h2>What is Queue? and How to Implement Queue in Python</h2>
+                    <div class="blog-subheader mt-3 py-2">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="author-name">by Abhay Tiwari</div>
+                                <div>
+                                    4 min read
+                                </div>
+                            </div>
+    
+                            <div class="col-6 post-date text-right">
+                                June 20, 2019
+    
+                                <div class="mt-1 d-flex flex-wrap justify-content-end">
+                                    <div class="likes pr-1">
+                                        <i class="fa fa-heart-o pr-1"></i> 15 likes
+                                    </div>
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="blog-thumbail d-flex flex-wrap justify-content-center mt-4">
+                        <img src="http://lorempixel.com/600/400/" alt="blog-thubnail-text">
+                    </div>
+                </section>
+    
+                <section id="blog-content" class="my-5">
+                    <p>
+                        Queue is a commonly used data structure for solving interview problems and real-life coding problems. In this blog post, we will learn what is Queue? and how to implement queue in python using the existing list data type.
+                    </p>
+    
+                    <h3>
+                        What is Queue?
+                    </h3>
+    
+                    <p>
+                        Queue is a linear data structure where insertion can be performed on one end (REAR) and deletion can be performed on another end (FRONT). The beginning of the queue is called FRONT and the ending of the queue is called REAR. Queue FIFO (First-in First-out) data structure i.e. First item inserted on the queue is the first item deleted from the queue.
+                    </p>
+    
+                    <p>
+                        Real life examples of queue are as follows.
+                    </p>
+    
+                    <ul>
+                        <li>
+                            Queue of people in a shop. A person who comes first is the first one who buys from the shop. The person who comes last is the last one who buys from the shop.
+                        </li>
+                        <li>
+                            Queue of people on the ticket window. A person who comes first gets a ticket first and the person who comes last gets a ticket in last.
+                        </li>
+                    </ul>
+    
+                    <h3>
+                        Queue Operations
+                    </h3>
+    
+                    <p>
+                        The commonly used queue operations are as follows.
+                    </p>
+    
+                    <h4>
+                        Enqueue Operation
+                    </h4>
+    
+                    <p>
+                        This operation adds an item to queue in the REAR of queue i.e. ending of the queue. The time complexity of the enqueue operation is O(1). The Algorithm of enqueue operation is as follows.
+                    </p>
+    
+                    <ol>
+                        <li>
+                            Check if queue is full or not.
+                        </li>
+                        <li>
+                            If queue is full, throw the overflow error.
+                        </li>
+                        <li>
+                            Else add an element in the REAR of the queue.                        
+                        </li>
+                    </ol>
+    
+    
+                    <p>
+                        Note=> We need to check queue is full only when we have size limitation. For example we are implementing queue with fixed sized data structure.
+                    </p>
+                </section>
+    
+                <section id="blog-footer">
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>
+                                Tags
+                            </h4>
+                        </div>
+                        <div class="col-12 d-flex flex-wrap mt-2">
+                            <div class="tag mr-2">Python</div>
+                            <div class="tag mr-2">Featured</div>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-6 social-media">
+                            <h4>Share (15)</h4>
+                            <div class="d-flex flex-wrap align-items-center mt-2">
+                                <div class="pr-3">
+                                    <a href="">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </div>
+    
+                                <div class="pr-3">
+                                    <a href="">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </div>
+    
+                                <div class="pr-3">
+                                    <a href="">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </div>
+    
+                                <div>
+                                    <a href="">
+                                        <i class="fa fa-quora"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-6">
+                            <div class="col-12 mt-2 d-flex flex-wrap justify-content-end">
+                                <div class="likes pr-3">
+                                    <i class="fa fa-heart-o"></i> 30 Likes
+                                </div>
+        
+                                <div class="comments">
+                                    <i class="fa fa-comment-o"></i> 10 Comments
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <section id="related-blogs">
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <h2>
+                                You may also like
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-lg-6 col-12 pr-0">
+                            <div class="card card-body">
+                                <div class="row pb-2">
+                                    <div class="col-12 d-flex flex-wrap">
+                                        <div class="tag mr-2">Python</div>
+                                        <div class="tag mr-2">Featured</div>
+                                    </div>
+                                </div>
+                                <h3 class="py-2">What is Queue? and How to Implement Queue in Python</h3>
+                                <p>If you are working with Laravel Forge and want to build a custom script that responds to the deployment webhooks than you likely encountered…</p>
+                                
+                                <div class="row">
+                                    <div class="col-12 mt-2 d-flex flex-wrap">
+                                        <div class="likes pr-3">
+                                            <i class="fa fa-heart-o"></i> 30 Likes
+                                        </div>
+                
+                                        <div class="comments">
+                                            <i class="fa fa-comment-o"></i> 10 Comments
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-6 col-12">
+                            <div class="card card-body">
+                                <div class="row pb-2">
+                                    <div class="col-12 d-flex flex-wrap">
+                                        <div class="tag mr-2">Python</div>
+                                        <div class="tag mr-2">Featured</div>
+                                    </div>
+                                </div>
+                                <h3 class="py-2">What is Queue? and How to Implement Queue in Python</h3>
+                                <p>If you are working with Laravel Forge and want to build a custom script that responds to the deployment webhooks than you likely encountered…</p>
+                                
+                                <div class="row">
+                                    <div class="col-12 mt-2 d-flex flex-wrap">
+                                        <div class="likes pr-3">
+                                            <i class="fa fa-heart-o"></i> 30 Likes
+                                        </div>
+                
+                                        <div class="comments">
+                                            <i class="fa fa-comment-o"></i> 10 Comments
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="row mt-3">
+                        <div class="col-lg-6 col-12 pr-0">
+                            <div class="card card-body">
+                                <div class="row pb-2">
+                                    <div class="col-12 d-flex flex-wrap">
+                                        <div class="tag mr-2">Python</div>
+                                        <div class="tag mr-2">Featured</div>
+                                    </div>
+                                </div>
+                                <h3 class="py-2">What is Queue? and How to Implement Queue in Python</h3>
+                                <p>If you are working with Laravel Forge and want to build a custom script that responds to the deployment webhooks than you likely encountered…</p>
+                                
+                                <div class="row">
+                                    <div class="col-12 mt-2 d-flex flex-wrap">
+                                        <div class="likes pr-3">
+                                            <i class="fa fa-heart-o"></i> 30 Likes
+                                        </div>
+                
+                                        <div class="comments">
+                                            <i class="fa fa-comment-o"></i> 10 Comments
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-6 col-12">
+                            <div class="card card-body">
+                                <div class="row pb-2">
+                                    <div class="col-12 d-flex flex-wrap">
+                                        <div class="tag mr-2">Python</div>
+                                        <div class="tag mr-2">Featured</div>
+                                    </div>
+                                </div>
+                                <h3 class="py-2">What is Queue? and How to Implement Queue in Python</h3>
+                                <p>If you are working with Laravel Forge and want to build a custom script that responds to the deployment webhooks than you likely encountered…</p>
+                                
+                                <div class="row">
+                                    <div class="col-12 mt-2 d-flex flex-wrap">
+                                        <div class="likes pr-3">
+                                            <i class="fa fa-heart-o"></i> 30 Likes
+                                        </div>
+                
+                                        <div class="comments">
+                                            <i class="fa fa-comment-o"></i> 10 Comments
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                </section>
+    
+                <section id="comments">
+                    <div class="row mt-5">
+                        <div class="col-12">
+                            <h2>
+                                Comments (14)
+                            </h2>
+                        </div>
+                    </div>
+    
+                    <div class="comment-wrapper">
+                        <div class="row mt-5">
+                            <div class="col-6">
+                                <div class="comment-author">
+                                    Some User
+                                </div>
+        
+                                <div class="comment-since">
+                                    2 months age
+                                </div>
+        
+                                <p class="comment-content mt-2">
+                                    There is a similar platform to Forge, known as Cloudways. Through this platform, users can launch a managed server on top IaaS in one click. Have you tried out this platform?
+                                </p>
+                            </div>
+        
+                            <div class="col-6 d-flex flex-wrap justify-content-end">
+                                <div>
+                                    <button class="btn btn-primary-outline">Reply</button>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="pl-3 reply">
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <div class="comment-author">
+                                        Abhay
+                                    </div>
+            
+                                    <div class="comment-since">
+                                        2 months age
+                                    </div>
+            
+                                    <p class="comment-content mt-2">
+                                        This is sample reply.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="comment-wrapper">
+                        <div class="row mt-5">
+                            <div class="col-6">
+                                <div class="comment-author">
+                                    Some User
+                                </div>
+        
+                                <div class="comment-since">
+                                    2 months age
+                                </div>
+        
+                                <p class="comment-content mt-2">
+                                    There is a similar platform to Forge, known as Cloudways. Through this platform, users can launch a managed server on top IaaS in one click. Have you tried out this platform?
+                                </p>
+                            </div>
+        
+                            <div class="col-6 d-flex flex-wrap justify-content-end">
+                                <div>
+                                    <button class="btn btn-primary-outline">Reply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <section id="add-comment" class="card card-body mt-3">
+    
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="py-2">Add a Comment</h3>
+                        </div>
+                    </div>
+                    <form action="">
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" class="form-control">
+                                </div>
+                            </div>
+    
+                            <div class="col-lg-6 col-12">
+                                <div class="form-group">
+                                    <label for="name">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="comment">Comment</label>
+                                <textarea name="comment" id="comment" cols="30" rows="10" class="form-control"></textarea>
+                            </div>
+                        </div>
+    
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <button class="btn btn-primary-outline">Comment</button>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock %}
