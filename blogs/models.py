@@ -24,3 +24,17 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    content = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField()
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'comment {} by {}'.format(self.content, self.name)
