@@ -18,6 +18,7 @@ class Blog(models.Model):
     tags = models.CharField(max_length=500)
     likes_count = models.IntegerField(default=0)
     comments_count = models.IntegerField(default=0)
+    share_count = models.IntegerField(default=0)
     publish_date = models.DateTimeField(blank=True, default=datetime.now())
     read_duration = models.IntegerField(default=0)
     category = models.ForeignKey(Category, blank=True, on_delete=models.CASCADE)
@@ -27,8 +28,8 @@ class Blog(models.Model):
 
 class Comment(models.Model):
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
+    author_name = models.CharField(max_length=100)
+    author_email = models.EmailField()
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     active = models.BooleanField()
@@ -37,4 +38,4 @@ class Comment(models.Model):
         ordering = ['created_on']
 
     def __str__(self):
-        return 'comment {} by {}'.format(self.content, self.name)
+        return 'comment {} by {}'.format(self.content, self.author_name)

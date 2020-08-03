@@ -8,22 +8,22 @@
         <div class="row">
             <div class="col-12">
                 <section id="blog-header">
-                    <h2>What is Queue? and How to Implement Queue in Python</h2>
+                    <h2>{{blog.title}}</h2>
                     <div class="blog-subheader mt-3 py-2">
                         <div class="row">
                             <div class="col-6">
-                                <div class="author-name">by Abhay Tiwari</div>
+                                <div class="author-name">by {{blog.author}}</div>
                                 <div>
-                                    4 min read
+                                    {{blog.read_duration}} min read
                                 </div>
                             </div>
     
                             <div class="col-6 post-date text-right">
-                                June 20, 2019
+                                {{blog.publish_date | date:'M d, Y'}}
     
                                 <div class="mt-1 d-flex flex-wrap justify-content-end">
-                                    <div class="likes pr-1">
-                                        <i class="fa fa-heart-o pr-1"></i> 15 likes
+                                    <div class="likes">
+                                        <i class="fa fa-heart-o"></i> {{blog.likes_count}} likes
                                     </div>
     
                                 </div>
@@ -36,7 +36,7 @@
                     </div>
                 </section>
     
-                <section id="blog-content" class="my-5">
+                <!-- <section id="blog-content" class="my-5">
                     <p>
                         Queue is a commonly used data structure for solving interview problems and real-life coding problems. In this blog post, we will learn what is Queue? and how to implement queue in python using the existing list data type.
                     </p>
@@ -94,8 +94,12 @@
                     <p>
                         Note=> We need to check queue is full only when we have size limitation. For example we are implementing queue with fixed sized data structure.
                     </p>
+                </section> -->
+                
+                <section id="blog-content" class="my-5">
+                    {{blog.body}}
                 </section>
-    
+                
                 <section id="blog-footer">
                     <div class="row">
                         <div class="col-12">
@@ -104,13 +108,14 @@
                             </h4>
                         </div>
                         <div class="col-12 d-flex flex-wrap mt-2">
-                            <div class="tag mr-2">Python</div>
-                            <div class="tag mr-2">Featured</div>
+                            {% for tag in blog.tags %}
+                                <div class="tag mr-2">{{tag}}</div>
+                            {% endfor %}
                         </div>
                     </div>
                     <div class="row mt-4">
                         <div class="col-6 social-media">
-                            <h4>Share (15)</h4>
+                            <h4>Share ({{blog.share_count}})</h4>
                             <div class="d-flex flex-wrap align-items-center mt-2">
                                 <div class="pr-3">
                                     <a href="">
@@ -141,17 +146,17 @@
                         <div class="col-6">
                             <div class="col-12 mt-2 d-flex flex-wrap justify-content-end">
                                 <div class="likes pr-3">
-                                    <i class="fa fa-heart-o"></i> 30 Likes
+                                    <i class="fa fa-heart-o"></i> {{blog.likes_count}} Likes
                                 </div>
         
                                 <div class="comments">
-                                    <i class="fa fa-comment-o"></i> 10 Comments
+                                    <i class="fa fa-comment-o"></i> {{blog.comments_count}} Comments
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-    
+                {% if related_blogs %}
                 <section id="related-blogs">
                     <div class="row mt-5">
                         <div class="col-12">
@@ -160,7 +165,62 @@
                             </h2>
                         </div>
                     </div>
-                    <div class="row mt-3">
+                    <div class="row">
+                        {% for related_blog in related_blogs %}
+                        <div class="col-lg-6 col-12 pr-0 d-flex flex-wrap mt-3">
+                            <div class="card card-body">
+                                <div class="row pb-2">
+                                    <div class="col-12 d-flex flex-wrap">
+                                        {% for tag in related_blog.tags %}
+                                            <div class="tag mr-2">{{tag}}</div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <h3 class="py-2">{{related_blog.title}}</h3>
+                                <p>{{related_blog.summary}}</p>
+                                
+                                <div class="row">
+                                    <div class="col-12 mt-2 d-flex flex-wrap">
+                                        <div class="likes pr-3">
+                                            <i class="fa fa-heart-o"></i> {{related_blog.likes_count}} Likes
+                                        </div>
+                
+                                        <div class="comments">
+                                            <i class="fa fa-comment-o"></i> {{related_blog.comments_count}} Comments
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+    
+                        <!-- <div class="col-lg-6 col-12">
+                            <div class="card card-body">
+                                <div class="row pb-2">
+                                    <div class="col-12 d-flex flex-wrap">
+                                        <div class="tag mr-2">Python</div>
+                                        <div class="tag mr-2">Featured</div>
+                                    </div>
+                                </div>
+                                <h3 class="py-2">What is Queue? and How to Implement Queue in Python</h3>
+                                <p>If you are working with Laravel Forge and want to build a custom script that responds to the deployment webhooks than you likely encountered…</p>
+                                
+                                <div class="row">
+                                    <div class="col-12 mt-2 d-flex flex-wrap">
+                                        <div class="likes pr-3">
+                                            <i class="fa fa-heart-o"></i> 30 Likes
+                                        </div>
+                
+                                        <div class="comments">
+                                            <i class="fa fa-comment-o"></i> 10 Comments
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+    
+                    <!-- <div class="row mt-3">
                         <div class="col-lg-6 col-12 pr-0">
                             <div class="card card-body">
                                 <div class="row pb-2">
@@ -210,95 +270,47 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-    
-                    <div class="row mt-3">
-                        <div class="col-lg-6 col-12 pr-0">
-                            <div class="card card-body">
-                                <div class="row pb-2">
-                                    <div class="col-12 d-flex flex-wrap">
-                                        <div class="tag mr-2">Python</div>
-                                        <div class="tag mr-2">Featured</div>
-                                    </div>
-                                </div>
-                                <h3 class="py-2">What is Queue? and How to Implement Queue in Python</h3>
-                                <p>If you are working with Laravel Forge and want to build a custom script that responds to the deployment webhooks than you likely encountered…</p>
-                                
-                                <div class="row">
-                                    <div class="col-12 mt-2 d-flex flex-wrap">
-                                        <div class="likes pr-3">
-                                            <i class="fa fa-heart-o"></i> 30 Likes
-                                        </div>
-                
-                                        <div class="comments">
-                                            <i class="fa fa-comment-o"></i> 10 Comments
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="col-lg-6 col-12">
-                            <div class="card card-body">
-                                <div class="row pb-2">
-                                    <div class="col-12 d-flex flex-wrap">
-                                        <div class="tag mr-2">Python</div>
-                                        <div class="tag mr-2">Featured</div>
-                                    </div>
-                                </div>
-                                <h3 class="py-2">What is Queue? and How to Implement Queue in Python</h3>
-                                <p>If you are working with Laravel Forge and want to build a custom script that responds to the deployment webhooks than you likely encountered…</p>
-                                
-                                <div class="row">
-                                    <div class="col-12 mt-2 d-flex flex-wrap">
-                                        <div class="likes pr-3">
-                                            <i class="fa fa-heart-o"></i> 30 Likes
-                                        </div>
-                
-                                        <div class="comments">
-                                            <i class="fa fa-comment-o"></i> 10 Comments
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
     
                 </section>
-    
+
+                {% endif %}
+
                 <section id="comments">
                     <div class="row mt-5">
                         <div class="col-12">
                             <h2>
-                                Comments (14)
+                                Comments ({{blog.comments_count}})
                             </h2>
                         </div>
                     </div>
-    
+
+                    {% if comments %}
+                    {% for comment in comments %}
                     <div class="comment-wrapper">
                         <div class="row mt-5">
                             <div class="col-6">
                                 <div class="comment-author">
-                                    Some User
+                                    {{comment.author_name}}
                                 </div>
         
                                 <div class="comment-since">
-                                    2 months age
+                                    {{comment.created_on | date:'M d, Y'}}
                                 </div>
         
                                 <p class="comment-content mt-2">
-                                    There is a similar platform to Forge, known as Cloudways. Through this platform, users can launch a managed server on top IaaS in one click. Have you tried out this platform?
+                                    {{comment.content}}
                                 </p>
                             </div>
         
-                            <div class="col-6 d-flex flex-wrap justify-content-end">
+                            <!-- <div class="col-6 d-flex flex-wrap justify-content-end">
                                 <div>
                                     <button class="btn btn-primary-outline">Reply</button>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
         
-                        <div class="pl-3 reply">
+                        <!-- <div class="pl-3 reply">
                             <div class="row mt-3">
                                 <div class="col-6">
                                     <div class="comment-author">
@@ -314,10 +326,12 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
+                    {% endfor %}
+                    {% endif %}
     
-                    <div class="comment-wrapper">
+                    <!-- <div class="comment-wrapper">
                         <div class="row mt-5">
                             <div class="col-6">
                                 <div class="comment-author">
@@ -339,7 +353,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </section>
     
                 <section id="add-comment" class="card card-body mt-3">
