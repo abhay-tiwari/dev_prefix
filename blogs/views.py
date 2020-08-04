@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
+from datetime import datetime
 
 from .models import Blog, Comment
 
@@ -38,3 +40,19 @@ def blog(request, slug):
 
     else: 
         return HttpResponse("<h1>Page not found</h1>")
+
+def add_comment(request):
+    if request.method == "POST":
+        author_name = request.POST["name"]
+        author_email = request.POST["email"]
+        comment = request.POST["comment"]
+        blog_id = request.POST["blog_id"]
+
+        blog = Blog.objects.filter(id=blog_id).first()
+
+        comment = Comment(author_name=author_name, author_email=author_email, content=comment, blog=blog, active=False, created_on=datetime.now())
+        comment.save()
+
+        return redirect('/blogs/' + blog.slug);
+        
+    return HttpResponse("hello")
