@@ -97,7 +97,7 @@
                 </section> -->
                 
                 <section id="blog-content" class="my-5">
-                    {{blog.body}}
+                    {{blog.body | safe}}
                 </section>
                 
                 <section id="blog-footer">
@@ -288,7 +288,7 @@
                     {% if comments %}
                     {% for comment in comments %}
                     <div class="comment-wrapper">
-                        <div class="row mt-5">
+                        <div class="row mt-3">
                             <div class="col-6">
                                 <div class="comment-author">
                                     {{comment.author_name}}
