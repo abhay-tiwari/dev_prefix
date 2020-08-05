@@ -1,10 +1,10 @@
 {% extends 'layout.html' %}
 
-{% block title %} | {{category | title}} {% endblock %}
+{% block title %} | {{category_name | title}} {% endblock %}
 
 {% block content %}
 
 
-{% include "partials/_recent-posts.html" with category_name=category only %}
+{% include "partials/_recent-posts.html" with category_name=category_name blogs=blogs %}
 
 {% endblock %}
