@@ -5,6 +5,9 @@
     --dark-color: #333333;
     --muted-color: #fbfbfb;
     --grey-color: #999;
+    --green-color: #008E00;
+    --purple-color: #C800A4;
+    --blue-color: rgb(16, 51, 246);
 }
 
 .dark-theme {
@@ -28,6 +31,11 @@
 
     --subheading-text-color: var(--grey-color);
     --post-border-color: var(--grey-color);
+
+    --python-background-color: var(--white-color);
+    --python-keyword-color: var(--purple-color);
+    --python-comment-color: var(--green-color);
+    --python-title-color: var(--blue-color);
 }
 
 .light-theme {
@@ -51,6 +59,11 @@
 
     --subheading-text-color: var(--grey-color);
     --post-border-color: var(--grey-color);
+
+    --python-background-color: var(--white-color);
+    --python-keyword-color: var(--purple-color);
+    --python-comment-color: var(--green-color);
+    --python-title-color: var(--blue-color);
 }
 
 *:focus {
@@ -480,3 +493,25 @@ body {
 #add-comment label {
     font-size: 0.875rem;
 }
+
+#blog-content pre {
+    padding: 2rem;
+    border: 1px solid var(--border-color-muted);
+    font-weight: 500;
+    font-size: 1rem;
+    background-color: var(--background-color-muted);
+}
+
+#blog-content .lang-python .hljs-keyword {
+    color: var(--python-keyword-color);
+}
+
+#blog-content .lang-python .hljs-string {
+    color: var(--python-comment-color);
+}
+
+#blog-content .lang-python .hljs-title {
+    color: var(--python-title-color);
+}
+
+
