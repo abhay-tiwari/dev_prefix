@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<script>
+    const rules = [
+        {regex: /#{6}\s?([^\n]+)\n/g, content: '<h6>$1</h6>'},
+        {regex: /#{5}\s?([^\n]+)\n/g, content: '<h5>$1</h5>'},
+        {regex: /#{4}\s?([^\n]+)\n/g, content: '<h4>$1</h4>'},
+        {regex: /#{3}\s?([^\n]+)\n/g, content: '<h3>$1</h3>'},
+        {regex: /#{2}\s?([^\n]+)\n/g, content: '<h2>$1</h2>'},
+        {regex: /#{1}\s?([^\n]+)\n/g, content: '<h1>$1</h1>'},
+        {regex: /\*\*?([^*]+)\*\*/g, content: '<strong>$1</strong>'},
+        {regex: /\_\_?([^_]+)\_\_/g, content: '<strong>$1</strong>'}
+    ];
+
+    Vue.directive('markdown', {
+        bind: function(el, binding) {
+            let html = el.textContent;
+            rules.forEach(function(rule) {
+                html = html.replace(rule.regex, rule.content);
+            });
+
+            if(binding.value.isPreview == true) {
+                el.innerHTML = html;
+            }
+
+            else {
+                el.textContent = html;
+            }
+        },
+
+        update: function(el, binding) {
+            if(binding.value.isPreview == true) {
+                let html = el.textContent;
+                el.innerHTML = html;
+            }
+
+            else {
+                let html = el.innerHTML;
+                el.textContent = html;
+            }
+        }
+    });
+</script>
+
+<div id="editor">
+    <div class="container"> 
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <h2 class="block-title">Editor</h2>
+                <textarea class="markdown-editor form-control" v-model="markdown"></textarea>
+            </div>
+            
+            <div class="col-lg-6 col-12">
+                <h2 class="block-title">Html Code</h2>
+                <div class="my-3">
+                    <button class="btn btn-primary-outline" v-if="isPreview" v-on:click="handlePreviewClick">html</button>
+                    <button class="btn btn-primary-outline" v-if="!isPreview" v-on:click="handleHtmlClick">preview</button>
+                </div>
+                <div class="preview" :key="markdown" id="markdown-preview" v-markdown="{ isPreview: isPreview, key: markdown }">
+                    [[markdown]]
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var editor = new Vue({
+        el: '#editor',
+        delimiters: ['[[', ']]'],
+        data: {
+            markdown: 'Hello World',
+            isPreview: false
+        },
+        methods: {
+            handlePreviewClick: function(event) {
+                this.isPreview = false;
+            },
+            handleHtmlClick: function(event) {
+                this.isPreview = true;
+            }
+        }
+    });
+</script>
+
+{% endblock %}

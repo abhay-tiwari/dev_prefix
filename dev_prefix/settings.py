@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'contacts.apps.ContactsConfig',
     'accounts.apps.AccountsConfig',
     'blogs.apps.BlogsConfig',
+    'editor.apps.EditorConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

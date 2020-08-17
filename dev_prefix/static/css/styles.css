@@ -520,3 +520,26 @@ body {
 }
 
 
+#editor .block-title {
+    font-size: 1.5rem;
+    color: var(--text-color-primary);
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    font-weight: 500;
+    text-shadow: 1px 1px 5px var(--text-color-muted);
+    padding: 2rem 1rem;
+}
+
+.markdown-editor {
+    height: 400px !important;
+    width: 100%;
+    resize: none;
+    outline: none;
+}
+
+.preview {
+    height: 400px;
+    width: 100%;
+    background-color: var(--background-color-muted);
+}
