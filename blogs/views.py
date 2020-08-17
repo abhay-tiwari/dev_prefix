@@ -21,7 +21,7 @@ def blog(request, slug):
         tags = tags.split(",")
         blog.tags = tags
 
-        related_blogs = Blog.objects.filter(category=blog.category)[:6]
+        related_blogs = Blog.objects.filter(category=blog.category and slug != blog.slug)[:6]
 
         for related_blog in related_blogs:
             tags = related_blog.tags
