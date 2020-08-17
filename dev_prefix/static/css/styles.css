@@ -519,4 +519,23 @@ body {
     color: var(--python-title-color);
 }
 
+#blog-content h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color-primary);
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+}
 
+#blog-content ul {
+    padding: 0;
+}
+
+#blog-content li {
+    list-style-type: none;
+}
+
+#blog-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+}
