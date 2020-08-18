@@ -294,7 +294,8 @@ body {
 }
 
 #right-options .social-media a,
-#blog-footer .social-media a {
+#blog-footer .social-media a,
+#blog-header .social-media a {
     font-size: 1.25rem;
     color: var(--text-color-dark);
 }
@@ -441,7 +442,6 @@ body {
     color: var(--text-color-dark);
     /* border-top: 1px solid var(--border-color-grey);
     border-bottom: 1px solid var(--border-color-grey); */
-    padding: 1rem;
 }
 
 #blog-footer h4 {
@@ -531,7 +531,7 @@ body {
     padding: 0;
 }
 
-#blog-content li {
+#blog-content ul li {
     list-style-type: none;
 }
 
