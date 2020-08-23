@@ -97,7 +97,8 @@
                         <div class="col-6">
                             <div class="col-12 mt-2 d-flex flex-wrap justify-content-end">
                                 <div class="likes pr-3">
-                                    <i class="fa fa-heart-o"></i> {{blog.likes_count}} Likes
+                                    <button  v-on:click="likeBlog({{blog.id}})"> <i class="fa" v-bind:class="{'fa-heart-o': !isLiked, 'fa-heart': isLiked}"></i> </button>
+                                     <span>[[likesCount]]</span> Likes
                                 </div>
 
                                 <div class="comments">
@@ -298,4 +299,90 @@
         </div>
     </div>
 </article>
+
+<script>
+    let blogApp = new Vue({
+        el: "#blog",
+        delimiters: ['[[', ']]'],
+        data: {
+            likesCount: parseInt('{{blog.likes_count}}'),
+            isLiked: false
+        },
+        created: function() {
+            let self = this;
+            let blogId = "{{blog.id}}";
+            let blogLikes = JSON.parse(localStorage.getItem('blogLikes'));
+
+            if(!!blogLikes) {
+                blogLikes.forEach(function(blog) {
+                    if(blog.id == blogId) {
+                        self.isLiked = blog.isLiked
+                    }
+                });                
+            }
+        },
+
+        methods: {
+            likeBlog: function(blogId) {
+                let self = this;
+
+                let updatedLikeState = !self.isLiked;
+                data = {
+                    isLiked: updatedLikeState,
+                    blogId: blogId
+                }
+
+                var request = axios({
+                    method: "POST",
+                    url: '/blogs/like_blog/',
+                    data: data,
+                    xsrfCookieName: 'csrftoken',
+                    xsrfHeaderName: 'X-CSRFToken',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                }).then(function(response) {
+
+                    let blogLikes = JSON.parse(localStorage.getItem('blogLikes'));
+
+                    self.isLiked = response.data.is_liked;
+
+                    if(!!blogLikes) {
+
+                        let isBlogExists = false;
+
+                        blogLikes = blogLikes.map(function(blog) {
+                            if(blog.id == blogId) {
+                                isBlogExists = true;
+                                blog.isLiked = self.isLiked;
+                            }
+                            
+                           return blog;
+                        });
+
+                        if(isBlogExists == false) {
+                            blogLikes.push({id: blogId, isLiked: self.isLiked});
+                        }
+                    }
+
+                    else {
+                        blogLikes = [];
+                        blogLikes.push({id: blogId, isLiked: self.isLiked});
+                    }
+
+                    localStorage.setItem('blogLikes', JSON.stringify(blogLikes));
+
+                    if(self.isLiked) {
+                        self.likesCount += 1;
+                    }
+
+                    else {
+                        self.likesCount -= 1;
+                    }
+                });
+
+            }
+        }
+    })
+</script>
 {% endblock %}

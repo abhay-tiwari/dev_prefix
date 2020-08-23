@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from datetime import datetime
+import json
 
 from .models import Blog, Comment
 
@@ -53,6 +54,24 @@ def add_comment(request):
         comment = Comment(author_name=author_name, author_email=author_email, content=comment, blog=blog, active=False, created_on=datetime.now())
         comment.save()
 
-        return redirect('/blogs/' + blog.slug);
+        return redirect('/blogs/' + blog.slug)
         
-    return HttpResponse("hello")
+
+def like_blog(request):
+    if request.method == "POST":
+        request_body = json.loads(request.body.decode('utf-8'))
+        blog_id = request_body.get("blogId")
+        is_liked = request_body.get("isLiked")
+        blog = Blog.objects.filter(id=blog_id).first()
+        likes_count = blog.likes_count
+
+        if is_liked == True:
+            likes_count += 1
+        else:
+            likes_count -= 1
+
+        Blog.objects.filter(id=blog_id).update(likes_count=likes_count)
+
+        return JsonResponse({"is_liked": is_liked}, status= 200)
+
+    

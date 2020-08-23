@@ -7,6 +7,7 @@
     --grey-color: #999;
     --green-color: #008E00;
     --purple-color: #C800A4;
+    --red-color: #FF225D;
     --blue-color: rgb(16, 51, 246);
 }
 
@@ -32,6 +33,8 @@
 
     --subheading-text-color: var(--grey-color);
     --post-border-color: var(--grey-color);
+
+    --like-color: var(--red-color);
 
     --python-background-color: var(--white-color);
     --python-keyword-color: var(--purple-color);
@@ -61,6 +64,8 @@
 
     --subheading-text-color: var(--grey-color);
     --post-border-color: var(--grey-color);
+
+    --like-color: var(--red-color);
 
     --python-background-color: var(--white-color);
     --python-keyword-color: var(--purple-color);
@@ -453,6 +458,18 @@ body {
 
 #blog-footer .likes, #blog-footer .comments {
     font-size: 0.875rem;
+}
+
+#blog-footer .likes button,
+#blog-footer .likes button:focus,
+#blog-footer .likes button:hover {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+#blog-footer .likes .fa-heart {
+    color: var(--like-color);
 }
 
 #related-blogs h2,
