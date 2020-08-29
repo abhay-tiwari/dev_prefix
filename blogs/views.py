@@ -29,7 +29,7 @@ def blog(request, slug):
             tags = tags.split(",")
             related_blog.tags = tags
 
-        comments = Comment.objects.filter(blog=blog)
+        comments = Comment.objects.filter(active=True, blog = blog)
 
         context = {
             "blog": blog,
