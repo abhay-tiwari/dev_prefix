@@ -17,30 +17,40 @@
                                     {{blog.read_duration}} min read
                                 </div>
                             </div>
-    
-                            <div class="col-6 text-right">
-                                <div class="d-flex flex-wrap justify-content-end">
-                                    <div class="likes">
-                                        <i class="fa fa-heart-o"></i> {{blog.likes_count}} likes
-                                    </div> 
-                                    
-                                    <div class="comments pl-3">
-                                        <i class="fa fa-comment-o"></i> {{blog.comments_count}} Comments
-                                    </div>
+
+                            <div class="col-6 social-media d-flex flex-wrap align-items-center justify-content-end mt-2">
+                                <div class="pr-3">
+                                    <a href="">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </div>
+
+                                <div class="pr-3">
+                                    <a href="">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </div>
+
+                                <div class="pr-3">
+                                    <a href="">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </div>
+
+                                <div>
+                                    <a href="">
+                                        <i class="fa fa-quora"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
-    
-                    <!-- <div class="blog-thumbail d-flex flex-wrap justify-content-center mt-4">
-                        <img src="http://lorempixel.com/600/400/" alt="blog-thubnail-text">
-                    </div> -->
                 </section>
-                
-                <section id="blog-content" class="my-5">
+
+                <section id="blog-content">
                     {{blog.body | safe}}
                 </section>
-                
+
                 <section id="blog-footer">
                     <div class="row">
                         <div class="col-12">
@@ -50,7 +60,7 @@
                         </div>
                         <div class="col-12 d-flex flex-wrap mt-2">
                             {% for tag in blog.tags %}
-                                <div class="tag mr-2">{{tag}}</div>
+                            <div class="tag mr-2">{{tag}}</div>
                             {% endfor %}
                         </div>
                     </div>
@@ -63,19 +73,19 @@
                                         <i class="fa fa-facebook"></i>
                                     </a>
                                 </div>
-    
+
                                 <div class="pr-3">
                                     <a href="">
                                         <i class="fa fa-twitter"></i>
                                     </a>
                                 </div>
-    
+
                                 <div class="pr-3">
                                     <a href="">
                                         <i class="fa fa-instagram"></i>
                                     </a>
                                 </div>
-    
+
                                 <div>
                                     <a href="">
                                         <i class="fa fa-quora"></i>
@@ -83,16 +93,17 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="col-6">
                             <div class="col-12 mt-2 d-flex flex-wrap justify-content-end">
                                 <div class="likes pr-3">
-                                    <i class="fa fa-heart-o"></i> {{blog.likes_count}} Likes
+                                    <button  v-on:click="likeBlog({{blog.id}})"> <i class="fa" v-bind:class="{'fa-heart-o': !isLiked, 'fa-heart': isLiked}"></i> </button>
+                                     <span>[[likesCount]]</span> Likes
                                 </div>
-        
-                                <div class="comments">
+
+                                <!-- <div class="comments">
                                     <i class="fa fa-comment-o"></i> {{blog.comments_count}} Comments
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -113,19 +124,19 @@
                                 <div class="row pb-2">
                                     <div class="col-12 d-flex flex-wrap">
                                         {% for tag in related_blog.tags %}
-                                            <div class="tag mr-2">{{tag}}</div>
+                                        <div class="tag mr-2">{{tag}}</div>
                                         {% endfor %}
                                     </div>
                                 </div>
                                 <h3 class="py-2">{{related_blog.title}}</h3>
                                 <p>{{related_blog.summary}}</p>
-                                
+
                                 <div class="row">
                                     <div class="col-12 mt-2 d-flex flex-wrap">
                                         <div class="likes pr-3">
                                             <i class="fa fa-heart-o"></i> {{related_blog.likes_count}} Likes
                                         </div>
-                
+
                                         <div class="comments">
                                             <i class="fa fa-comment-o"></i> {{related_blog.comments_count}} Comments
                                         </div>
@@ -134,85 +145,7 @@
                             </div>
                         </div>
                         {% endfor %}
-    
-                        <!-- <div class="col-lg-6 col-12">
-                            <div class="card card-body">
-                                <div class="row pb-2">
-                                    <div class="col-12 d-flex flex-wrap">
-                                        <div class="tag mr-2">Python</div>
-                                        <div class="tag mr-2">Featured</div>
-                                    </div>
-                                </div>
-                                <h3 class="py-2">What is Queue? and How to Implement Queue in Python</h3>
-                                <p>If you are working with Laravel Forge and want to build a custom script that responds to the deployment webhooks than you likely encountered…</p>
-                                
-                                <div class="row">
-                                    <div class="col-12 mt-2 d-flex flex-wrap">
-                                        <div class="likes pr-3">
-                                            <i class="fa fa-heart-o"></i> 30 Likes
-                                        </div>
-                
-                                        <div class="comments">
-                                            <i class="fa fa-comment-o"></i> 10 Comments
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
-    
-                    <!-- <div class="row mt-3">
-                        <div class="col-lg-6 col-12 pr-0">
-                            <div class="card card-body">
-                                <div class="row pb-2">
-                                    <div class="col-12 d-flex flex-wrap">
-                                        <div class="tag mr-2">Python</div>
-                                        <div class="tag mr-2">Featured</div>
-                                    </div>
-                                </div>
-                                <h3 class="py-2">What is Queue? and How to Implement Queue in Python</h3>
-                                <p>If you are working with Laravel Forge and want to build a custom script that responds to the deployment webhooks than you likely encountered…</p>
-                                
-                                <div class="row">
-                                    <div class="col-12 mt-2 d-flex flex-wrap">
-                                        <div class="likes pr-3">
-                                            <i class="fa fa-heart-o"></i> 30 Likes
-                                        </div>
-                
-                                        <div class="comments">
-                                            <i class="fa fa-comment-o"></i> 10 Comments
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-    
-                        <div class="col-lg-6 col-12">
-                            <div class="card card-body">
-                                <div class="row pb-2">
-                                    <div class="col-12 d-flex flex-wrap">
-                                        <div class="tag mr-2">Python</div>
-                                        <div class="tag mr-2">Featured</div>
-                                    </div>
-                                </div>
-                                <h3 class="py-2">What is Queue? and How to Implement Queue in Python</h3>
-                                <p>If you are working with Laravel Forge and want to build a custom script that responds to the deployment webhooks than you likely encountered…</p>
-                                
-                                <div class="row">
-                                    <div class="col-12 mt-2 d-flex flex-wrap">
-                                        <div class="likes pr-3">
-                                            <i class="fa fa-heart-o"></i> 30 Likes
-                                        </div>
-                
-                                        <div class="comments">
-                                            <i class="fa fa-comment-o"></i> 10 Comments
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-    
                 </section>
 
                 {% endif %}
@@ -234,71 +167,23 @@
                                 <div class="comment-author">
                                     {{comment.author_name}}
                                 </div>
-        
+
                                 <div class="comment-since">
                                     {{comment.created_on | date:'M d, Y'}}
                                 </div>
-        
+
                                 <p class="comment-content mt-2">
                                     {{comment.content}}
                                 </p>
                             </div>
-        
-                            <!-- <div class="col-6 d-flex flex-wrap justify-content-end">
-                                <div>
-                                    <button class="btn btn-primary-outline">Reply</button>
-                                </div>
-                            </div> -->
                         </div>
-        
-                        <!-- <div class="pl-3 reply">
-                            <div class="row mt-3">
-                                <div class="col-6">
-                                    <div class="comment-author">
-                                        Abhay
-                                    </div>
-            
-                                    <div class="comment-since">
-                                        2 months age
-                                    </div>
-            
-                                    <p class="comment-content mt-2">
-                                        This is sample reply.
-                                    </p>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                     {% endfor %}
                     {% endif %}
-    
-                    <!-- <div class="comment-wrapper">
-                        <div class="row mt-5">
-                            <div class="col-6">
-                                <div class="comment-author">
-                                    Some User
-                                </div>
-        
-                                <div class="comment-since">
-                                    2 months age
-                                </div>
-        
-                                <p class="comment-content mt-2">
-                                    There is a similar platform to Forge, known as Cloudways. Through this platform, users can launch a managed server on top IaaS in one click. Have you tried out this platform?
-                                </p>
-                            </div>
-        
-                            <div class="col-6 d-flex flex-wrap justify-content-end">
-                                <div>
-                                    <button class="btn btn-primary-outline">Reply</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                 </section>
-    
+
                 <section id="add-comment" class="card card-body mt-3">
-    
+
                     <div class="row">
                         <div class="col-12">
                             <h3 class="py-2">Add a Comment</h3>
@@ -314,7 +199,7 @@
                                     <input type="text" name="name" id="name" class="form-control" required>
                                 </div>
                             </div>
-    
+
                             <div class="col-lg-6 col-12">
                                 <div class="form-group">
                                     <label for="name">Email</label>
@@ -322,14 +207,15 @@
                                 </div>
                             </div>
                         </div>
-    
+
                         <div class="row">
                             <div class="col-12">
                                 <label for="comment">Comment</label>
-                                <textarea name="comment" id="comment" cols="30" rows="10" class="form-control" required></textarea>
+                                <textarea name="comment" id="comment" cols="30" rows="10" class="form-control"
+                                    required></textarea>
                             </div>
                         </div>
-    
+
                         <div class="row mt-3">
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary-outline">Comment</button>
@@ -339,7 +225,7 @@
                 </section>
             </div>
 
-            <div class="col-12 col-lg-4 pl-5">
+            <div class="col-12 d-none d-lg-block col-lg-4 pl-5">
                 <aside id="right-options">
                     <div class="categories">
 
@@ -413,4 +299,90 @@
         </div>
     </div>
 </article>
+
+<script>
+    let blogApp = new Vue({
+        el: "#blog",
+        delimiters: ['[[', ']]'],
+        data: {
+            likesCount: parseInt('{{blog.likes_count}}'),
+            isLiked: false
+        },
+        created: function() {
+            let self = this;
+            let blogId = "{{blog.id}}";
+            let blogLikes = JSON.parse(localStorage.getItem('blogLikes'));
+
+            if(!!blogLikes) {
+                blogLikes.forEach(function(blog) {
+                    if(blog.id == blogId) {
+                        self.isLiked = blog.isLiked
+                    }
+                });                
+            }
+        },
+
+        methods: {
+            likeBlog: function(blogId) {
+                let self = this;
+
+                let updatedLikeState = !self.isLiked;
+                data = {
+                    isLiked: updatedLikeState,
+                    blogId: blogId
+                }
+
+                var request = axios({
+                    method: "POST",
+                    url: '/blogs/like_blog/',
+                    data: data,
+                    xsrfCookieName: 'csrftoken',
+                    xsrfHeaderName: 'X-CSRFToken',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                }).then(function(response) {
+
+                    let blogLikes = JSON.parse(localStorage.getItem('blogLikes'));
+
+                    self.isLiked = response.data.is_liked;
+
+                    if(!!blogLikes) {
+
+                        let isBlogExists = false;
+
+                        blogLikes = blogLikes.map(function(blog) {
+                            if(blog.id == blogId) {
+                                isBlogExists = true;
+                                blog.isLiked = self.isLiked;
+                            }
+                            
+                           return blog;
+                        });
+
+                        if(isBlogExists == false) {
+                            blogLikes.push({id: blogId, isLiked: self.isLiked});
+                        }
+                    }
+
+                    else {
+                        blogLikes = [];
+                        blogLikes.push({id: blogId, isLiked: self.isLiked});
+                    }
+
+                    localStorage.setItem('blogLikes', JSON.stringify(blogLikes));
+
+                    if(self.isLiked) {
+                        self.likesCount += 1;
+                    }
+
+                    else {
+                        self.likesCount -= 1;
+                    }
+                });
+
+            }
+        }
+    })
+</script>
 {% endblock %}

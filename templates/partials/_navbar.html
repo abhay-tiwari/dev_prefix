@@ -30,7 +30,7 @@
                     <a class="nav-link" href="{% url 'category' 'python' %}">Python</a>
                 </li>
 
-                <li 
+                <!-- <li 
                 {% if 'react' in request.path %}
                 class="nav-item active"
                 {% else %}
@@ -38,9 +38,9 @@
                 {% endif %}
                 >
                     <a class="nav-link" href="{% url 'category' 'react' %}">React</a>
-                </li>
+                </li> -->
 
-                <li 
+                <!-- <li 
                 {% if 'django' in request.path %}
                 class="nav-item active"
                 {% else %}
@@ -48,7 +48,7 @@
                 {% endif %}
                 >
                     <a class="nav-link" href="{% url 'category' 'django' %}">Django</a>
-                </li>
+                </li> -->
 
                 <li 
                 {% if 'algorithms' in request.path %}
@@ -92,7 +92,7 @@
                 </li>
                 {% else %}
                     <li class="nav-item active">
-                        <a class="btn btn-primary-outline" href="#">Contact Us</a>
+                        <a class="btn btn-primary-outline" href="{% url 'contact' %}">Contact Us</a>
                     </li>
                 {% endif %}
                 
