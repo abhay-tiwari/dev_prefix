@@ -21,7 +21,14 @@ class Blog(models.Model):
     share_count = models.IntegerField(default=0)
     publish_date = models.DateTimeField(blank=True, default=datetime.now())
     read_duration = models.IntegerField(default=0)
-    category = models.ForeignKey(Category, blank=True, on_delete=models.CASCADE)
+    meta_title = models.CharField(max_length=100, default="default title")
+    meta_description = models.CharField(max_length=300, default="default description")
+    meta_tags = models.CharField(max_length=500, default="meta tags")
+    is_deleted = models.BooleanField(default=False)
+    is_published = models.BooleanField(default=False)
+    deleted_on = models.DateTimeField(blank=True, default=datetime.now())
+    created_on = models.DateTimeField(blank=True, default=datetime.now())
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,  blank=True, default=None)
 
     def __str__(self):
         return self.title

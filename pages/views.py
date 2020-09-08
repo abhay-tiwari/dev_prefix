@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from blogs.models import Blog, Category
 
 def index(request):
-    blogs = Blog.objects.all()
+    blogs = Blog.objects.filter(is_deleted=False, is_published=True).order_by('-publish_date')[:5]
     categories = Category.objects.all()
 
     for blog in blogs:
@@ -24,7 +24,7 @@ def category(request, category_name):
 
     category = Category.objects.filter(name=category_name).first()
 
-    blogs = Blog.objects.filter(category=category)[:5]
+    blogs = Blog.objects.filter(category=category, is_published=True, is_deleted=False)[:5]
 
     for blog in blogs:
         tags_str = blog.tags

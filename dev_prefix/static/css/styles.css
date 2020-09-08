@@ -48,12 +48,14 @@
     --text-color-white: var(--white-color);
     --text-color-muted: var(--muted-color);
     --text-color-dark: var(--dark-color);
+    --text-color-danger: var(--red-color);
 
     --background-color-primary: var(--primary-color);
     --background-color-secondary: var(--white-color);
     --background-color-white: var(--white-color);
     --background-color-muted: var(--muted-color);
     --background-color-dark: var(--dark-color);
+    --background-color-danger: var(--red-color);
 
     --border-color-primary: var(--primary-color);
     --border-color-secondary: var(--white-color);
@@ -61,6 +63,7 @@
     --border-color-muted: var(--muted-color);
     --border-color-dark: var(--dark-color);
     --border-color-grey: var(--grey-color);
+    --border-color-danger: var(--red-color);
 
     --subheading-text-color: var(--grey-color);
     --post-border-color: var(--grey-color);
@@ -124,9 +127,42 @@ body {
     text-transform: uppercase;
 }
 
-.btn-primary-outline:hover {
+.btn-danger-outline {
+    background-color: var(--background-color-white);
+    border-radius: 0;
+    border-color: var(--border-color-danger);
+    padding: 0.5rem 0.75rem;
+    color: var(--text-color-danger);
+    letter-spacing: 2px;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
+.btn-danger-outline:focus, .btn-danger-outline:hover {
+    background-color: var(--background-color-danger);
+    color: var(--text-color-white);
+    box-shadow: none;
+}
+
+.btn-flat {
+    border-radius: 0;
+    background-color: transparent;
+    color: var(--text-color-dark);
+    border-color: var(--border-color-dark);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn-flat:hover, .btn-flat:focus {
+    background-color: var(--background-color-dark);
+    color: var(--text-color-white);
+    box-shadow: none;
+}
+
+.btn-primary-outline:hover, .btn-primary-outline:focus {
     background-color: var(--background-color-primary);
     color: var(--text-color-white);
+    box-shadow: none;
 }
 
 #main-content .brand-name {
@@ -360,7 +396,8 @@ body {
 
 #privacy-policy h3,
 #terms-conditions h3,
-#cookie-policy h3 {
+#cookie-policy h3,
+#posts-list h3 {
     font-size: 1.5rem;
     letter-spacing: 2px;
     text-align: center;
@@ -579,6 +616,69 @@ body {
     height: 400px;
     width: 100%;
     background-color: var(--background-color-muted);
+}
+
+#post-add {
+    letter-spacing: 2px;
+}
+
+#post-add h3 {
+    font-size: 1.5rem;
+    color: var(--text-color-primary);
+}
+
+#post-add select {
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+#post-add select:focus {
+    border-color: var(--text-color-primary);
+}
+
+#posts-list h3 {
+    color: var(--text-color-primary);
+}
+
+#posts-list thead th {
+    border-bottom-width: 1px;
+}
+
+#posts-list tbody td:first-child {
+    color: var(--text-color-primary);
+    text-decoration: none;
+}
+
+#posts-list tbody td:not(:last-child),
+#posts-list thead th:not(:last-child)
+ {
+    border-right: none !important;
+}
+
+#posts-list tbody td:not(:first-child),
+#posts-list thead th:not(:first-child) {
+    border-left: none !important;
+}
+
+#posts-list tbody td:first-child a {
+    color: var(--text-color-dark);
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+#posts-list tbody td:first-child a:focus,
+#posts-list tbody td:first-child a:hover {
+    color: var(--text-color-primary);
+}
+
+.modal {
+    letter-spacing: 2px;
+}
+
+.btn-sm {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem !important;
 }
 
 @media screen and (max-width: 991px) {

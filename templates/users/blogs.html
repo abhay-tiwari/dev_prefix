@@ -1,0 +1,125 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+
+<div class="container" id="posts-list">
+    {% include 'partials/_alerts.html' %}
+
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <h3 class="text-uppercase">All Posts</h3>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12 d-flex align-items-center justify-content-end">
+            <a class="btn btn-primary-outline" href="{% url 'add_blog' %}">Add New</a>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-uppercase">Blogs</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for blog in blogs %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'update_blog' blog.id %}">{{blog.title}}</a>
+                                
+                            </td>
+
+                            <td class="text-right">
+                                {% if blog.is_published == False %}     
+                                <a href="#publish-modal" class="mr-2 btn btn-primary-outline btn-sm" data-toggle="modal" data-target-id="{{blog.id}}">
+                                    Publish
+                                </a>
+                                {% endif %}
+
+                                <a href="#delete-modal" class="btn btn-danger-outline btn-sm" data-toggle="modal" data-target-id="{{blog.id}}">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="delete-modal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-uppercase" id="staticBackdropLabel">Delete Blog</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-uppercase">
+                <p>Are you sure want to delete this blog?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-flat" data-dismiss="modal">Close</button>
+                <form action="{% url 'delete_blog' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{blog.id}}" name="blog-id">
+                    <button type="submit" class="btn btn-danger-outline">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="publish-modal" data-backdrop="static" data-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-uppercase" id="staticBackdropLabel">Publish Blog</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-uppercase">
+                <p>Are you sure want public this blog?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-flat" data-dismiss="modal">Close</button>
+                <form action="{% url 'publish_blog' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{blog.id}}" name="blog-id">
+                    <button type="submit" class="btn btn-primary-outline">Publish</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#delete-modal').on('show.bs.modal', function(e) {
+            var blogId = $(e.relatedTarget).data('target-id');
+            $(e.currentTarget).find('input[name="blog-id"]').val(blogId);
+        });
+
+        $('#publish-modal').on('show.bs.modal', function(e) {
+            var blogId = $(e.relatedTarget).data('target-id');
+            $(e.currentTarget).find('input[name="blog-id"]').val(blogId);
+        });
+    });
+</script>
+
+{% endblock %}
