@@ -7,8 +7,11 @@
         <div class="col-12">
             <div class="card card-body">
                 <h3 class="py-3 text-center">Add Blog</h3>
-                
-                <form action="{% url 'add_blog' %}" method="POST">
+                {% if blog %}
+                <form action="{% url 'update_blog' blog.id %}" method="POST">
+                {% else %}
+                <form action="{% url 'add-blog' %}" method="POST">
+                {% endif %}
                 {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-6 col-12">
@@ -43,8 +46,9 @@
                             <div class="form-group">
                                 <label for="author">Author</label>
                                 <select name="author" id="author" class="custom-select">
-                                    <option selected>-</option>
-                                    <option value="abhay">abhay</option>
+                                    {% for author in authors %}
+                                        <option value="{{author.id}}" {% if blog.author.id == author.id %} selected {%endif%}>{{author.username}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>
@@ -53,9 +57,9 @@
                             <div class="form-group">
                                 <label for="category">Category</label>
                                 <select name="category" id="category" class="custom-select">
-                                    <option selected>-</option>
-                                    <option value="python">Python</option>
-                                    <option value="algorithms">Algorithms</option>
+                                    {% for category in categories %}
+                                    <option value="{{category.id}}">{{category.name}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </div>

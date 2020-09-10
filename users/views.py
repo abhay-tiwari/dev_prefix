@@ -54,10 +54,40 @@ def get_all_blogs(request):
 
 @login_required()
 def update_blog(request, blog_id):
+    if request.method == "POST":
+        author_id = request.POST["author"]
+        category_id = request.POST["category"]
+
+        author = User.objects.filter(id=author_id).first()
+        category = Category.objects.filter(id=category_id).first()
+
+        Blog.objects.update_or_create(id=blog_id, defaults = {
+            "title": request.POST["title"],
+            "meta_title": request.POST["meta-title"],
+            "slug": request.POST["slug"],
+            "summary": request.POST["summary"],
+            "author": author,
+            "category": category,
+            "tags": request.POST["tags"],
+            "meta-tags": request.POST["meta-tags"],
+            "meta-description": request.POST["meta-description"],
+            "body": request.POST["content"],
+            "updated_on": datetime.now()
+        })
+
+        messages.success(request, "Blog updated successfully.")
+
+        return redirect("all_blogs")
+
     blog = Blog.objects.filter(id=blog_id).first()
+
+    authors = User.objects.all()
+    categories = Category.objects.all()
     
     context = { 
-        'blog': blog
+        'blog': blog,
+        'authors': authors,
+        'categories': categories
     }
 
     return render(request, 'users/add-blog.html', context=context)

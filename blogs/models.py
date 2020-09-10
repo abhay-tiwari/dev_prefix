@@ -28,6 +28,7 @@ class Blog(models.Model):
     is_published = models.BooleanField(default=False)
     deleted_on = models.DateTimeField(blank=True, default=datetime.now())
     created_on = models.DateTimeField(blank=True, default=datetime.now())
+    updated_on = models.DateTimeField(blank=True, default=datetime.now())
     category = models.ForeignKey(Category, on_delete=models.CASCADE,  blank=True, default=None)
 
     def __str__(self):
