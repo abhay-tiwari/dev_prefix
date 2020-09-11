@@ -2,6 +2,11 @@
 
 {% load static %}
 
+{% block meta %}
+<meta name="title" content="{{blog.meta_title}}">
+<meta name="description" content="{{blog.meta_description}}">
+{% endblock %}
+
 {% block content %}
 <article id="blog">
     <div class="container my-5">

@@ -6,6 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="VwGt43jru9xGx6wU41g5Y-gHhYhOZcbdtQEtJCvQO2Y" />
+    {% block meta %}
+    
+    {% endblock %}
+
     <title>Dev Prefix {% block title %} {% endblock %}</title>
     <link rel="icon" href="{%static 'img/favicon.ico'%}">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
@@ -36,14 +40,14 @@
 
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170852761-1"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170852761-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
         gtag('config', 'UA-170852761-1');
-    </script>
+    </script> -->
 
 </body>
 </html>
