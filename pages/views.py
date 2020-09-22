@@ -24,7 +24,7 @@ def category(request, category_name):
 
     category = Category.objects.filter(name=category_name).first()
 
-    blogs = Blog.objects.filter(category=category, is_published=True, is_deleted=False)[:5]
+    blogs = Blog.objects.filter(category=category, is_published=True, is_deleted=False)[:15]
 
     for blog in blogs:
         tags_str = blog.tags
